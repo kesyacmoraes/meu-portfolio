@@ -195,10 +195,122 @@ async function eliminarItem(colecao, id) {
     }
 }
 
+
+function carregarTabelaBlog() {
+    const tabela = document.getElementById('tabela-blog-body');
+    if (!tabela) return;
+
+    db.collection("posts_blog").orderBy("data", "desc").onSnapshot(snapshot => {
+        tabela.innerHTML = '';
+        snapshot.forEach(doc => {
+            const post = doc.data();
+            const dataFormatada = post.data ? post.data.toDate().toLocaleDateString('pt-PT') : '---';
+            
+            tabela.innerHTML += `
+                <tr>
+                    <td><strong>${post.titulo}</strong></td>
+                    <td>${dataFormatada}</td>
+                    <td>
+                        <button class="btn-action btn-edit" onclick="prepararEdicaoBlog('${doc.id}')">Alterar</button>
+                        <button class="btn-action btn-delete" onclick="eliminarItem('posts_blog', '${doc.id}')">Apagar</button>
+                    </td>
+                </tr>`;
+        });
+    });
+}
+
+async function prepararEdicaoBlog(id) {
+    try {
+        const doc = await db.collection("posts_blog").doc(id).get();
+        const p = doc.data();
+
+        // Preenche os campos do formulário para editares
+        document.getElementById('b-titulo').value = p.titulo;
+        document.getElementById('b-resumo').value = p.resumo;
+        document.getElementById('b-link').value = p.imagem;
+
+        // Muda o botão de "Publicar" para "Atualizar"
+        const btn = document.querySelector('button[onclick="criarPostBlog()"]');
+        if(btn) {
+            btn.innerText = "Atualizar Artigo";
+            btn.setAttribute("onclick", `atualizarPostBlog('${id}')`);
+        }
+        
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) { alert("Erro ao carregar post: " + e.message); }
+}
+
+async function atualizarPostBlog(id) {
+    const dados = {
+        titulo: document.getElementById('b-titulo').value,
+        resumo: document.getElementById('b-resumo').value,
+        imagem: document.getElementById('b-link').value
+    };
+
+    try {
+        await db.collection("posts_blog").doc(id).update(dados);
+        alert("Artigo atualizado!");
+        limparCampos();
+        // Volta o botão ao normal
+        const btn = document.querySelector('button[onclick^="atualizarPostBlog"]');
+        btn.innerText = "Publicar Artigo";
+        btn.setAttribute("onclick", "criarPostBlog()");
+    } catch (e) { alert("Erro ao atualizar: " + e.message); }
+}
+
+// --- FUNÇÕES DE EDIÇÃO DE PROJETO ---
+
+async function prepararEdicaoProjeto(id) {
+    try {
+        const doc = await db.collection("projetos").doc(id).get();
+        const p = doc.data();
+
+        // Preenche os campos do formulário (usando os IDs do teu HTML)
+        document.getElementById('p-nome').value = p.titulo || p.nome;
+        document.getElementById('p-tech').value = p.tecnologias || '';
+        document.getElementById('p-desc').value = p.descricao || '';
+        document.getElementById('p-link').value = p.link || '';
+
+        // Muda o botão de "Adicionar" para "Atualizar"
+        const btn = document.querySelector('button[onclick="criarProjeto()"]');
+        if(btn) {
+            btn.innerText = "Atualizar Projeto";
+            btn.setAttribute("onclick", `atualizarProjeto('${id}')`);
+        }
+        
+        // Sobe a página para o formulário
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) { alert("Erro ao carregar projeto: " + e.message); }
+}
+
+async function atualizarProjeto(id) {
+    const dados = {
+        titulo: document.getElementById('p-nome').value,
+        tecnologias: document.getElementById('p-tech').value,
+        descricao: document.getElementById('p-desc').value,
+        link: document.getElementById('p-link').value
+    };
+
+    try {
+        await db.collection("projetos").doc(id).update(dados);
+        alert("Projeto atualizado com sucesso!");
+        limparCampos();
+        
+        // Restaura o botão original
+        const btn = document.querySelector('button[onclick^="atualizarProjeto"]');
+        if(btn) {
+            btn.innerText = "Salvar Projeto";
+            btn.setAttribute("onclick", "criarProjeto()");
+        }
+    } catch (e) { alert("Erro ao atualizar: " + e.message); }
+}
+
 // --- 5. INICIALIZAÇÃO ---
 
 document.addEventListener('DOMContentLoaded', () => {
-    carregarTabelasFormacoesESkills(); // Carrega as duas tabelas novas
+    carregarTabelasFormacoesESkills(); 
     if (document.getElementById('tabela-projetos-body')) carregarTabelaProjetos();
-    // Adicionar carregarTabelaBlog() se necessário
+    
+    // VERIFICAÇÃO DO BLOG
+    if (document.getElementById('tabela-blog-body')) carregarTabelaBlog();
 });

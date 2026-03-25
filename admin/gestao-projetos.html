@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestão de Projetos | Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .table-container { margin-top: 30px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.2); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
+        th { color: var(--neon-blue); text-transform: uppercase; font-size: 0.8rem; }
+        .btn-action { padding: 5px 10px; cursor: pointer; border-radius: 4px; font-size: 0.8rem; transition: 0.3s; }
+        .btn-edit { background: none; border: 1px solid var(--neon-blue); color: var(--neon-blue); margin-right: 5px; }
+        .btn-edit:hover { background: var(--neon-blue); color: #000; }
+        .btn-delete { background: none; border: 1px solid #ff4d4d; color: #ff4d4d; }
+        .btn-delete:hover { background: #ff4d4d; color: #fff; }
+        input, textarea { width: 100%; padding: 10px; margin-bottom: 10px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 5px; }
+    </style>
+</head>
+<body style="display: none;" id="corpo-admin">
+
+    <div class="container" style="padding-top: 40px;">
+        <a href="dashboard.html" style="color: var(--neon-blue); text-decoration: none;">← Voltar ao Hub</a>
+        
+        <h1 style="color: #00ff88; margin-top: 20px;">📁 Gestão de Projetos</h1>
+
+        <section class="card" style="margin-top: 20px;">
+            <h3>Adicionar Novo Projeto</h3>
+            <div class="form-group" style="margin-top: 15px;">
+                <input type="text" id="p-nome" placeholder="Nome do Projeto">
+                <input type="text" id="p-tech" placeholder="Tecnologias (Ex: HTML, CSS, JS)">
+                <textarea id="p-desc" placeholder="Descrição curta..." rows="2"></textarea>
+                <input type="text" id="p-link" placeholder="Link (GitHub ou Demo)">
+                <button onclick="criarProjeto()" style="background: #00ff88; color: black; font-weight: bold; width: 100%;">Salvar Projeto</button>
+            </div>
+        </section>
+
+        <section class="card" style="margin-top: 30px;">
+            <h3>Projetos Existentes</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Projeto</th>
+                            <th>Tecnologias</th>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-projetos-body">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

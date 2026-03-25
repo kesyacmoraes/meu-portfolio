@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrativo | Kesya</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* Estilo específico para centralizar o login */
+        .login-container {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-card {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        input { margin-bottom: 15px; }
+        .error-msg { color: #ff4d4d; font-size: 0.9rem; margin-bottom: 10px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="light-orb-pink"></div>
+    <div class="light-orb-blue"></div>
+
+    <div class="login-container">
+        <section class="card login-card">
+            <h2 style="color: var(--neon-blue); margin-bottom: 20px;">Painel de Controlo</h2>
+            <p style="margin-bottom: 20px; opacity: 0.7;">Acesso restrito para edição de conteúdos.</p>
+            
+            <div id="login-error" class="error-msg">Credenciais inválidas!</div>
+
+            <input type="email" id="admin-email" placeholder="E-mail de Administrador" required>
+            <input type="password" id="admin-password" placeholder="Palavra-passe" required>
+            
+            <button onclick="autenticar()" style="width: 100%;">Entrar no Sistema</button>
+            
+            <p style="margin-top: 20px; font-size: 0.8rem;">
+                <a href="../index.html" style="color: var(--text-light); text-decoration: none;">← Voltar ao site</a>
+            </p>
+        </section>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    
+    <script src="../js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestão de Skills e Formação | Admin</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .table-container { margin-top: 30px; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.2); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #333; }
+        th { color: var(--neon-pink); text-transform: uppercase; font-size: 0.8rem; }
+        .btn-action { padding: 5px 10px; cursor: pointer; border-radius: 4px; font-size: 0.8rem; }
+        .btn-edit { background: none; border: 1px solid var(--neon-pink); color: var(--neon-pink); margin-right: 5px; }
+        .btn-delete { background: none; border: 1px solid #ff4d4d; color: #ff4d4d; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 10px; background: #1a1a1a; border: 1px solid #333; color: white; border-radius: 5px; }
+    </style>
+</head>
+<body style="display: none;" id="corpo-admin">
+
+    <div class="container" style="padding-top: 40px;">
+        <a href="dashboard.html" style="color: var(--neon-blue); text-decoration: none;">← Voltar ao Hub</a>
+        
+        <h1 style="color: var(--neon-pink); margin-top: 20px;">🎓 Gestão de Formação e Skills</h1>
+
+       <section class="card" style="margin-top: 20px; border-left: 5px solid var(--neon-pink);">
+            <h3 style="color: var(--neon-pink);">🎓 Registar Formação / Curso</h3>
+            <div class="form-group" style="margin-top: 15px;">
+                <input type="text" id="f-area" placeholder="Nome do Curso (Ex: Engenharia, Python Essentials)">
+                <input type="text" id="f-desc" placeholder="Descrição curta">
+                <input type="text" id="f-inst" placeholder="Instituição">
+                <input type="text" id="f-ano" placeholder="Ano (Ex: 2024-2026)">
+                
+                <label style="display:block; margin: 10px 0 5px; font-size:0.8rem;">ESTADO:</label>
+                <select id="f-estado">
+                    <option value="Em curso">Em curso ⏳</option>
+                    <option value="Concluído">Concluído ✅</option>
+                </select>
+
+                <button onclick="criarFormacaoCompleta()" style="background: var(--neon-pink); color: white; width: 100%; padding: 12px; border:none; cursor:pointer; margin-top:10px; font-weight:bold;">Guardar Formação</button>
+            </div>
+        </section>
+
+        <section class="card" style="margin-top: 20px; border-left: 5px solid var(--neon-blue);">
+            <h3 style="color: var(--neon-blue);">⚡ Registar Soft ou Hard Skill</h3>
+            <div class="form-group" style="margin-top: 15px;">
+                <input type="text" id="s-nome" placeholder="Nome da Skill (Ex: Liderança, JavaScript, Docker)">
+                <input type="text" id="s-desc" placeholder="Descrição da skill (ex: Nível Avançado, etc)">
+
+                <select id="s-tipo">
+                    <option value="Soft">Soft Skill</option>
+                    <option value="Hard">Hard Skill</option>
+                </select>
+                <button onclick="criarSkillSimples()">Guardar Skill</button>
+            </div>
+
+        </section>
+            <h3>Lista de Formações Académicas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Curso/Escola</th>
+                        <th>Ano</th>
+                        <th>Estado</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-academica-body"></tbody>
+            </table>
+
+            <br><br>
+
+            <h3>Lista de Soft & Hard Skills</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Descrição</th>
+                        <th>Tipo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-skills-body"></tbody>
+            </table>
+            </div>
+        </section>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    
+    <script src="../js/auth.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kesya | Desenvolvedora Frontend</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="light-orb-pink"></div>
+    <div class="light-orb-blue"></div>
+
+    <header class="navbar">
+        <nav>
+            <ul class="nav-direita">
+                <li><a href="index.html">Início</a></li>
+                <li><a href="pages/sobre.html">Sobre</a></li>
+                <li><a href="pages/skills.html">Skills</a></li>
+                <li><a href="pages/blog.html">Blog</a></li>
+                <li><a href="pages/projetos.html">Projetos</a></li>
+                <li><a href="pages/contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro" style="text-align: left ; margin: 0px 0;">
+            <h2 style="color: var(--neon-pink);">Portfólio</h2>
+        </section>
+        <section class="intro-topo" style="text-align: center; margin: 40px 0;">
+            <h4 style="font-size: 3rem;">Sou a <span style="color: var(--neon-pink);">Kesya Oliveira</span></h4>
+            <p id="slogan-dinamico" style="font-size: 1.2rem; opacity: 0.9;"></p>
+        </section>
+
+        <div class="bento-grid">
+            
+            <div class="card card-foto">
+                <img src="assets/img/ft07.png" id="foto-kesya" alt="Foto Kesya">
+            </div>
+
+            <div class="card tech-stack-card">
+                <h3 style="color: var(--neon-pink);">Tech Stack</h3>
+                <p>Frontend Dev & Cybersecurity</p>
+                <div class="tags">
+                    <span>HTML</span> • <span>CSS</span> • <span>JS</span> • <span>Python</span>
+                </div>
+                <a href="pages/projetos.html" class="link-seta" style="color: var(--neon-blue); text-decoration: none; font-weight: bold; margin-top: 15px; display: block;">Ver todos os projetos →</></a>
+            </div>
+            
+
+            <div class="card card-blog-link">
+                <h3 style="color: var(--neon-pink);">Dicas & Insights</h3>
+                <p>Vê as minhas últimas publicações sobre tech.</p>
+                <a href="pages/blog.html" class="link-seta" style="color: var(--neon-blue); text-decoration: none; font-weight: bold; margin-top: 15px; display: block;">Explorar →</a>
+            </div>
+            
+        </div>
+
+        <p id="slogan-dinamico" style="font-size: 1.2rem; opacity: 0.9; text-align: center;">Criando interfaces seguras e funcionais. </p>
+    </main>
+
+    <div style="text-align: center; margin: 40px 0;">
+        <a href="admin/login.html" class="btn-admin" style="
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            border: 1px solid var(--neon-blue);
+            border-radius: 30px;
+            color: var(--neon-blue);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+            opacity: 0.6;
+        ">
+            <span>🔒</span> Área restrita(Gestão de Conteúdo)
+        </a>
+    </div>
+
+    <style>
+        .btn-admin:hover {
+            opacity: 1;
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+    </style>
+
+    <footer style="margin-top: 50px; text-align: center; padding: 20px; opacity: 0.6;">
+        <p>&copy; 2026 - Trabalho Final UC00604 - Programar para a web.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

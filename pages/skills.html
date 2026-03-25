@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills e Formação | Kesya</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <div class="light-orb-pink"></div>
+    <div class="light-orb-blue"></div>
+
+    <header class="navbar">
+        <nav>
+            <ul class="nav-direita">
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-central">
+        <section class="intro" style="text-align: left ; margin: 0px 0;">
+            <h2 style="color: var(--neon-pink);">Portfólio</h2>
+        </section>
+
+        <section class="card" style="width: 100%; max-width: 2000px; margin-bottom: 20px;">
+            <h1 style="color: var(--neon-blue); font-size: 2.5rem; margin-bottom: 20px;">Formações</h1>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Área</th>
+                        <th>Descrição</th>
+                        <th>Instituição de Ensino</th>
+                        <th>Ano</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-corpo">
+                    <tr>
+                        <td colspan="5" style="text-align:center; opacity:0.5;">A carregar formações...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div style="display: flex; gap: 20px; width: 100%; max-width: 2100px; margin: 0 auto; flex-wrap: wrap;">
+
+        <div class="card">
+            <h2 style="color: var(--neon-pink);">Formação Académica</h2>
+            <ul id="lista-academica" style="list-style: none; padding: 0;"></ul>
+        </div>
+
+        <div class="card">
+            <h2 style="color: var(--neon-pink);">Soft Skills</h2>
+            <ul id="lista-soft" style="list-style: none; padding: 0;"></ul>
+        </div>
+
+        <div class="card">
+            <h2 style="color: var(--neon-pink);">Hard Skills</h2>
+            <ul id="lista-hard" style="list-style: none; padding: 0;"></ul>
+        
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 40px; opacity: 0.5;">
+        <p>&copy; 2026 - Trabalho Final UC 00604</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+    <script src="../js/script.js"></script> 
+
+    <script src="../js/render.js"></script>
+
+</body>
+</html>

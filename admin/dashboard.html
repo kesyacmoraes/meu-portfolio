@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle | Kesya Moraes</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .hub-card {
+            text-align: center;
+            padding: 40px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .hub-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .hub-card i { font-size: 3rem; margin-bottom: 15px; }
+        .btn-logout { background: #ff4d4d; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; color: white; font-weight: bold; }
+    </style>
+</head>
+<body style="display: none;" id="corpo-admin">
+    
+    <div class="light-orb-blue"></div>
+
+    <header class="navbar" style="justify-content: space-between; padding: 0 40px;">
+        <h2 style="color: var(--neon-blue);">🛡️ Admin Hub</h2>
+        <button onclick="logout()" class="btn-logout">Sair do Sistema</button>
+    </header>
+
+    <main class="container">
+        <div style="text-align: center; margin-top: 40px;">
+            <h1>Bem-vinda de volta, Kesya.</h1>
+            <p>Selecione a área que deseja gerir hoje:</p>
+        </div>
+
+        <div class="hub-grid">
+            
+            <a href="gestao-projetos.html" class="card hub-card">
+                <div style="font-size: 40px;">📁</div>
+                <h3 style="color: #00ff88; margin-top: 15px;">Projetos</h3>
+                <p>Adicionar ou remover itens do portfólio.</p>
+            </a>
+
+            <a href="gestao-blog.html" class="card hub-card">
+                <div style="font-size: 40px;">✍️</div>
+                <h3 style="color: var(--neon-blue); margin-top: 15px;">Blog</h3>
+                <p>Publicar artigos e gerir posts.</p>
+            </a>
+
+            <a href="gestao-skills.html" class="card hub-card">
+                <div style="font-size: 40px;">🎓</div>
+                <h3 style="color: var(--neon-pink); margin-top: 15px;">Formação</h3>
+                <p>Atualizar cursos e competências.</p>
+            </a>
+
+            <a href="../index.html" class="card hub-card">
+                <div style="font-size: 40px;">🌐</div>
+                <h3 style="color: #ffd700; margin-top: 15px;">Ver Site</h3>
+                <p>Visualizar o portfólio público.</p>
+            </a>
+
+        </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        function logout() {
+            firebase.auth().signOut().then(() => window.location.href = "login.html");
+        }
+    </script>
+</body>
+</html>

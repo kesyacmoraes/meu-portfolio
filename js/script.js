@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // --- 5. Efeito de Digitação ---
-const textoSlogan = "Desenvolvedora Frontend | Criativa | Aspirante a Segurança Digital";
+const textoSlogan = "Técnico Especialista em Programação de Sistemas de Informação (CET Nível 5) | Criativa | Aspirante a Segurança Digital";
 let indexSlogan = 0;
 
 function escreverTexto() {

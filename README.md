@@ -1,4 +1,4 @@
-# 🚀 Meu Portfólio - Frontend & Cibersegurança
+# 🚀 Meu Portfólio - Técnico Especialista em Programação de Sistemas de Informação (CET Nível 5) & Cibersegurança
 
 Olá! Eu sou a **Kesya**, estudante de programação focada em criar interfaces modernas, rápidas e, acima de tudo, seguras. Este projeto é o meu portfólio pessoal, onde partilho os meus projetos, formação académica e insights sobre o mundo da tecnologia.
 
